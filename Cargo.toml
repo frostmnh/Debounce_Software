@@ -1,6 +1,10 @@
 [package]
 name = "Debounce_Software"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
+evdev = "0.13.1" # 您可以查看 crates.io 上的最新版本
+#nix = "0.30.1"
+nix = { version = "0.30.1", features = ["user"] }
+
