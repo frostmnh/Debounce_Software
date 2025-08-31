@@ -1,5 +1,5 @@
 // --- 1. 匯入 (Imports) ---
-use log::{info, debug, error, warn};
+use log::{info, debug, error, warn, trace};
 use evdev::{
     uinput::VirtualDevice,
     AttributeSet, Device, InputEvent, KeyCode, RelativeAxisCode, EventType,
@@ -250,6 +250,18 @@ fn handle_event(
             return Ok(());
         }
     }
+
+
+    // 將滑鼠移動和其他事件的日誌級別降為 TRACE
+    match event.event_type() {
+        EventType::RELATIVE => {
+            // 使用 trace! 而不是 debug!
+            trace!("轉發相對移動: Code {} | 值: {}", event.code(), event.value());
+        },
+        _ => {}
+    }
+
+
     virtual_device.emit(&[event.clone()])?;
     Ok(())
 }
