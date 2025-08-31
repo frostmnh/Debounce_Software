@@ -1,7 +1,0 @@
-fn main() {
-    println!("Hello, world!");
-}
-
-
-git config --global user.email "frostmnh@tutanota.com"
-git config --global user.signingkey 5F8B75B7FD975AFD
